@@ -44,9 +44,11 @@ export const TokenBalanceProvider: React.FC = ({ children }) => {
   }, [Moralis.Web3API.account, user]);
 
   React.useEffect(() => {
-    Moralis.Web3.enable();
-    fetchTokens();
-  }, [fetchTokens, Moralis]);
+    if (user) {
+      Moralis.Web3.enable();
+      fetchTokens();
+    }
+  }, [fetchTokens, Moralis, user]);
 
   React.useEffect(() => {
     const subscribeToTransactions = async () => {
