@@ -50,7 +50,6 @@ The following happens when a commit is pushed to a branch other than master:
 
 1.  Dependencies are installed.
 1.  Linter is run.
-1.  Branch version of the app is deployed via Vercel
 
 ### Pushing/merging to master
 
