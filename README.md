@@ -23,7 +23,7 @@ yarn install
 Run the app locally:
 
 ```sh
-yarn dev
+yarn start
 ```
 
 ## Contributing
