@@ -4,6 +4,7 @@
 
 Application that enables you to send ERC20 tokens on Ethereum. It only works on Ropsten test network for now.
 You need to have a [metamask](https://metamask.io/) installed in order to interact with the app.
+App is available at: https://intense-badlands-38847.herokuapp.com/
 
 # Getting Started with Create React App
 
@@ -53,4 +54,4 @@ The following happens when a commit is pushed to a branch other than master:
 
 ### Pushing/merging to master
 
-App is automatically deployed to: https://rpsls-sigma.vercel.app/
+App is automatically deployed to: https://intense-badlands-38847.herokuapp.com/
