@@ -10,12 +10,17 @@ interface Props {
   onDismiss: () => void;
 }
 
+type FormValues = {
+  to?: string;
+  amount?: string;
+};
+
 const TokenSendModal = ({ token, onDismiss }: Props) => {
   const totalBalance = tokenBalance(token.balance, token.decimals);
   const [form] = Form.useForm();
   const { Moralis, user } = useMoralis();
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: FormValues) => {
     errorHandler(async () => {
       const options = {
         type: 'erc20',
@@ -30,7 +35,7 @@ const TokenSendModal = ({ token, onDismiss }: Props) => {
         const pendingTransfer = new PendingTransfer();
 
         const transaction = await web3.eth.getTransaction(hash);
-        pendingTransfer.set('to_address', values.to.toLowerCase());
+        pendingTransfer.set('to_address', values.to?.toLowerCase());
         pendingTransfer.set(
           'from_address',
           user.get('ethAddress').toLowerCase()
@@ -49,6 +54,7 @@ const TokenSendModal = ({ token, onDismiss }: Props) => {
       });
     });
   };
+
   return (
     <Modal
       title={`Send ${token.symbol} (${token.name})`}

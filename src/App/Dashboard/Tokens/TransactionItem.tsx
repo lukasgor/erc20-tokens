@@ -2,6 +2,7 @@ import { Alert, Skeleton, Spin } from 'antd';
 import React from 'react';
 import { Transaction } from './TransfersInfo';
 import web3 from '../../../utils/web3';
+import { SendOutlined } from '@ant-design/icons';
 
 type Props = {
   transaction: Transaction;
@@ -24,7 +25,7 @@ const displayAvgTime = (
   return `, Average time: ~${averageMiningTime} seconds`;
 };
 
-const mapStatusToType = (status: Status) => {
+const getStatusFromType = (status: Status) => {
   switch (status) {
     case Status.Error:
       return 'error';
@@ -76,14 +77,19 @@ const TransactionItem = ({ transaction, averageMiningTime }: Props) => {
 
   return (
     <Alert
-      message={`${transaction.amount} ${transaction.token_symbol} -> ${transaction.to_address}`}
+      message={
+        <strong>
+          -{transaction.amount} {transaction.token_symbol} <SendOutlined />{' '}
+          {transaction.to_address}
+        </strong>
+      }
       description={`Fee: ${Number(
         web3.utils.fromWei(transaction.gas_price, 'gwei')
       ).toFixed(2)} gwei, Status: ${status}${displayAvgTime(
         status,
         averageMiningTime
       )}`}
-      type={mapStatusToType(status)}
+      type={getStatusFromType(status)}
       style={{ marginBottom: '10px' }}
       icon={status === Status.Pending ? <Spin /> : undefined}
       showIcon
