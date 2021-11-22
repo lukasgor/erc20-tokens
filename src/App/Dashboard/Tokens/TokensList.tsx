@@ -43,9 +43,11 @@ const TokensList: React.FC<Props> = ({ tokens, setTokenToSend }) => {
                 }
               />
             }
-            title={`${tokenBalance(item.balance, item.decimals)} ${
-              item.symbol
-            }`}
+            title={
+              <strong style={{ fontSize: '16px' }}>
+                {tokenBalance(item.balance, item.decimals)} {item.symbol}
+              </strong>
+            }
           />
         </List.Item>
       )}

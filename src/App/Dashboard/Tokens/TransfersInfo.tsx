@@ -115,6 +115,10 @@ const TransfersInfo = () => {
         .on('data', async (transaction) => {
           const res = await web3.eth.getTransaction(transaction);
 
+          if (!res) {
+            return;
+          }
+
           if (res.from.toLowerCase() === user.get('ethAddress')) {
             const maybeUpdatedTransaction = recentTransactions?.find(
               (tx) => tx.nonce === String(res.nonce)
@@ -178,7 +182,7 @@ const TransfersInfo = () => {
   }, [Moralis, setRecentTransactions]);
 
   return (
-    <Card title="Recently sent transactions (5)">
+    <Card title={<h3>Recently sent transactions (5)</h3>}>
       {recentTransactions &&
         recentTransactions.map((t) => (
           <TransactionItem

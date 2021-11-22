@@ -29,7 +29,7 @@ const Tokens = () => {
           token={tokenToSend}
         />
       )}
-      <Card style={{ height: 'fit-content' }} title="ERC20 Tokens">
+      <Card style={{ height: 'fit-content' }} title={<h3>ERC20 Tokens</h3>}>
         {loading ? (
           <Skeleton />
         ) : userTokens && userTokens.length ? (

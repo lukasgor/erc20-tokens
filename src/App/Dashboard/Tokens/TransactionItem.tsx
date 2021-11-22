@@ -1,8 +1,8 @@
-import { Alert, Skeleton, Spin } from 'antd';
+import { Alert, Skeleton, Spin, Tooltip } from 'antd';
 import React from 'react';
 import { Transaction } from './TransfersInfo';
 import web3 from '../../../utils/web3';
-import { SendOutlined } from '@ant-design/icons';
+import { LinkOutlined, SendOutlined } from '@ant-design/icons';
 
 type Props = {
   transaction: Transaction;
@@ -69,6 +69,17 @@ const TransactionItem = ({ transaction, averageMiningTime }: Props) => {
     };
   }, [transaction.transaction_hash, status]);
 
+  React.useEffect(() => {
+    const fetchT = async () => {
+      const res = await fetch(
+        `https://api-ropsten.etherscan.io/api?module=transaction&action=gettxreceiptstatus&txhash=${transaction.transaction_hash}&apikey=I51FA8TNIMUQN8I5R7DRNUQRWH19QRP98S`
+      );
+      const json = await res.json();
+      console.log(json);
+    };
+    fetchT();
+  }, [transaction.transaction_hash]);
+
   if (!status) {
     return (
       <Skeleton.Input style={{ width: 600, marginBottom: '10px' }} active />
@@ -78,9 +89,22 @@ const TransactionItem = ({ transaction, averageMiningTime }: Props) => {
   return (
     <Alert
       message={
-        <strong>
-          -{transaction.amount} {transaction.token_symbol} <SendOutlined />{' '}
-          {transaction.to_address}
+        <strong style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div>
+            -{transaction.amount} {transaction.token_symbol}{' '}
+            <SendOutlined style={{ margin: '0 10px' }} />{' '}
+            {transaction.to_address}
+          </div>
+          <Tooltip title="View on Etherscan">
+            <a
+              href={`https://ropsten.etherscan.io/tx/${transaction.transaction_hash}`}
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: 'inherit' }}
+            >
+              <LinkOutlined />
+            </a>
+          </Tooltip>
         </strong>
       }
       description={`Fee: ${Number(
