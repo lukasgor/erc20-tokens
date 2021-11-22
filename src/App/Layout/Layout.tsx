@@ -7,7 +7,7 @@ const { Content } = AntLayout;
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <AntLayout style={{ height: '100%' }}>
+    <AntLayout>
       <Header />
       <Content style={{ padding: '20px 0' }}>{children}</Content>
       <Footer />
