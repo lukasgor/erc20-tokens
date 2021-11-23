@@ -28,6 +28,8 @@ const ConnectWalletPrompt = () => {
       }
       style={{
         background: 'white',
+        maxWidth: '600px',
+        margin: 'auto',
       }}
     />
   );
