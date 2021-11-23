@@ -50,6 +50,9 @@ const TransfersInfo = () => {
   }, [user, Moralis]);
 
   React.useEffect(() => {
+    if (!user) {
+      return;
+    }
     let nowBlock: any;
     // Get the current block number
     web3.eth.getBlockNumber(function (err, nowBlockNumber) {
@@ -65,7 +68,7 @@ const TransfersInfo = () => {
         });
       });
     });
-  }, []);
+  }, [user]);
 
   React.useEffect(() => {
     const subsribeToNewTransactions = async () => {
