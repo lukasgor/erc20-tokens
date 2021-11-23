@@ -182,7 +182,14 @@ const TransfersInfo = () => {
   }, [Moralis, setRecentTransactions]);
 
   return (
-    <Card title={<h3>Recently sent transactions (5)</h3>}>
+    <Card
+      title={
+        <h3 style={{ margin: 0, padding: 0 }}>
+          Recently sent transactions{' '}
+          {recentTransactions && `(${recentTransactions.length})`}
+        </h3>
+      }
+    >
       {recentTransactions &&
         recentTransactions.map((t) => (
           <TransactionItem

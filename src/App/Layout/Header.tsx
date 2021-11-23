@@ -35,7 +35,9 @@ const Header = () => {
     <AntHeader style={{ background: 'white' }}>
       <Menu mode="horizontal" selectedKeys={[activeItem]}>
         <Menu.Item key="dashboard">
-          <NavLink to="/">Dashboard</NavLink>
+          <NavLink to="/">
+            <h3 style={{ margin: 0, padding: 0 }}>Dashboard</h3>
+          </NavLink>
         </Menu.Item>
         {isAuthenticated ? (
           <SubMenu
