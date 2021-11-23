@@ -96,6 +96,7 @@ const TransfersInfo = () => {
     };
 
     subsribeToNewTransactions();
+
     return () => {
       if (newTransferSubscription) {
         newTransferSubscription.unsubscribe();
@@ -134,7 +135,9 @@ const TransfersInfo = () => {
           }
         });
     };
+
     subscribeToPendingTransactionUpdates();
+
     return () => {
       if (pendingTransactionSubscription) {
         pendingTransactionSubscription.unsubscribe();
@@ -172,7 +175,9 @@ const TransfersInfo = () => {
         message.info('Transaction has been updated!');
       });
     };
+
     subscribeToTransferUpdates();
+
     return () => {
       if (transferUpdateSubscription) {
         transferUpdateSubscription.unsubscribe();

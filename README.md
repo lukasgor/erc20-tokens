@@ -53,4 +53,4 @@ The following happens when a commit is pushed to a branch other than master:
 
 ### Pushing/merging to master
 
-App is automatically deployed to: https://intense-badlands-38847.herokuapp.com/
+TBD
