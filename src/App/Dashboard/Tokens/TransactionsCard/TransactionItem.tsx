@@ -87,7 +87,7 @@ const TransactionItem = ({ transaction, averageMiningTime }: Props) => {
 
   if (!status) {
     return (
-      <Skeleton.Input style={{ width: 600, marginBottom: '10px' }} active />
+      <Skeleton.Input style={{ width: 500, marginBottom: '10px' }} active />
     );
   }
 

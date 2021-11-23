@@ -10,7 +10,7 @@ const Tokens = () => {
         display: 'grid',
         gridTemplateColumns: isMobile
           ? '1fr'
-          : 'minmax(300px, 600px) minmax(400px, 1fr)',
+          : 'minmax(300px, 600px) minmax(550px, 1fr)',
         gridGap: '20px',
         justifyContent: 'center',
         margin: '0 60px 100px 60px',
