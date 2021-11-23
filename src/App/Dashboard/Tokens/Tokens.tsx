@@ -1,18 +1,11 @@
-import { Card, Skeleton } from 'antd';
-import React from 'react';
 import { useMedia } from 'react-use';
-import TokensList from './TokensList';
-import { Token } from './TokensList';
-import TokenSendModal from './TokenSendModal';
-import TokenBalanceContext from '../../Providers/TokenBalance';
-import TransfersInfo from './TransfersInfo';
+import TransactionsCard from './TransactionsCard/TransactionsCard';
+import TokensBalanceCard from './TokensBalanceCard/TokensBalanceCard';
 
 const Tokens = () => {
-  const [tokenToSend, setTokenToSend] = React.useState<Token | null>(null);
-  const { loading, userTokens } = React.useContext(TokenBalanceContext);
   const isMobile = useMedia('(max-width: 767px)');
   return (
-    <div
+    <main
       style={{
         display: 'grid',
         gridTemplateColumns: isMobile
@@ -23,26 +16,9 @@ const Tokens = () => {
         margin: '0 60px 100px 60px',
       }}
     >
-      {tokenToSend && (
-        <TokenSendModal
-          onDismiss={() => setTokenToSend(null)}
-          token={tokenToSend}
-        />
-      )}
-      <Card
-        style={{ height: 'fit-content' }}
-        title={<h3 style={{ margin: 0, padding: 0 }}>ERC20 Tokens</h3>}
-      >
-        {loading ? (
-          <Skeleton />
-        ) : userTokens && userTokens.length ? (
-          <TokensList tokens={userTokens} setTokenToSend={setTokenToSend} />
-        ) : (
-          'No ERC20 tokens found.'
-        )}
-      </Card>
-      <TransfersInfo />
-    </div>
+      <TokensBalanceCard />
+      <TransactionsCard />
+    </main>
   );
 };
 

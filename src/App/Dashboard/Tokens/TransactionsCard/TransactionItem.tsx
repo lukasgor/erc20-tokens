@@ -1,8 +1,8 @@
 import { Alert, Skeleton, Spin, Tooltip } from 'antd';
 import React from 'react';
-import { Transaction } from './TransfersInfo';
-import web3 from '../../../utils/web3';
 import { LinkOutlined, SendOutlined } from '@ant-design/icons';
+import { Transaction } from './TransactionsCard';
+import web3 from '../../../../utils/web3';
 
 type Props = {
   transaction: Transaction;

@@ -1,9 +1,9 @@
 import { Form, Input, InputNumber, message, Modal } from 'antd';
 import { useMoralis } from 'react-moralis';
 import { Token } from './TokensList';
-import tokenBalance from '../../../utils/tokenBalance';
-import errorHandler from '../../../utils/errorHander';
-import web3 from '../../../utils/web3';
+import tokenBalance from '../../../../utils/tokenBalance';
+import errorHandler from '../../../../utils/errorHander';
+import web3 from '../../../../utils/web3';
 
 interface Props {
   token: Token;

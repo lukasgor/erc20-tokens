@@ -2,7 +2,7 @@ import { Card, message, Skeleton } from 'antd';
 import React from 'react';
 import { useMoralis } from 'react-moralis';
 import TransactionItem from './TransactionItem';
-import web3 from '../../../utils/web3';
+import web3 from '../../../../utils/web3';
 
 export type Transaction = {
   amount: string;
@@ -23,7 +23,7 @@ let pendingTransactionSubscription: any;
 let transferUpdateSubscription: any;
 let newTransferSubscription: any;
 
-const TransfersInfo = () => {
+const TransactionsCard = () => {
   const { Moralis, user } = useMoralis();
   const [recentTransactions, setRecentTransactions] = React.useState<
     null | Transaction[]
@@ -213,4 +213,4 @@ const TransfersInfo = () => {
   );
 };
 
-export default TransfersInfo;
+export default TransactionsCard;

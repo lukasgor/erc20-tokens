@@ -1,6 +1,6 @@
 import { Avatar, Button, List } from 'antd';
 import { SendOutlined } from '@ant-design/icons';
-import tokenBalance from '../../../utils/tokenBalance';
+import tokenBalance from '../../../../utils/tokenBalance';
 
 export type Token = {
   token_address: string;
